@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Token SDK</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-joystick me-2"></i>
+                Game Token SDK
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-section="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="documentation">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="playground">API Playground</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="flows">Token Flows</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Game Token SDK</h1>
+                    <p class="lead mb-4">
+                        A powerful SDK for generating call data to interact with Ethereum game token contracts.
+                        Create and manage game tokens with ease using our API.
+                    </p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button class="btn btn-primary btn-lg px-4 me-md-2" onclick="navigateTo('playground')">
+                            Try API Playground
+                        </button>
+                        <button class="btn btn-outline-secondary btn-lg px-4" onclick="navigateTo('documentation')">
+                            View Documentation
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="hero-image">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331941.png" alt="Game Token" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-currency-exchange feature-icon"></i>
+                            <h3 class="card-title">Token Creation</h3>
+                            <p class="card-text">Generate call data for creating game tokens with customizable parameters.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-fire feature-icon"></i>
+                            <h3 class="card-title">Token Burning</h3>
+                            <p class="card-text">Burn game tokens to retrieve XP tokens using our simple API.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-arrow-left-right feature-icon"></i>
+                            <h3 class="card-title">Complete Flows</h3>
+                            <p class="card-text">Handle entire token flows from creation to burning with single API calls.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="documentation" class="section">
+            <h1 class="mb-4">API Documentation</h1>
+            <p class="lead mb-4">
+                This API provides endpoints for generating Ethereum contract call data for Game Token operations.
+            </p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">Base URL</h2>
+                </div>
+                <div class="card-body">
+                    <code class="d-block p-3 bg-light">http://localhost:3000</code>
+                </div>
+            </div>
+
+            <div class="accordion" id="apiAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            <span class="badge bg-success me-2">GET</span> / - Health Check
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Check if the API is up and running.</p>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "status": "ok",
+  "version": "0.1.0"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/calldata/creda-approve - Approve CRIDA Tokens
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data to approve CRIDA tokens to be spent by a spender.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "spender": "0x1234567890123456789012345678901234567890",
+  "amount": "1000000000000000000000"
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "calldata": "0x095ea7b3000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000003635c9adc5dea00000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/calldata/approve-xp - Approve XP Tokens
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data to approve XP tokens to be spent by a spender.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "spender": "0x1234567890123456789012345678901234567890",
+  "amount": "1000000000000000000000"
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "calldata": "0x095ea7b3000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000003635c9adc5dea00000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/calldata/lock-creda - Lock CRIDA Tokens
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data to lock CRIDA tokens to get XP tokens.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "amount": "1000000000000000000000"
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "calldata": "0xbec697db00000000000000000000000000000000000000000000003635c9adc5dea00000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/calldata/create-token - Create Game Token
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data to create a new game token.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "xp_amount": "1000000000000000000000",
+  "name": "My Game Token",
+  "symbol": "MGT",
+  "decimals": 18
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "calldata": "0xfd44d27400000000000000000000000000000000000000000000003635c9adc5dea00000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000d4d792047616d6520546f6b656e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000034d4754000000000000000000000000000000000000000000000000000000000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/calldata/burn-token - Burn Game Token
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data to burn game tokens.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "game_id": "1",
+  "amount": "500000000000000000000"
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "calldata": "0x5ed6c1db0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000001b1ae4d6e2ef500000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/flow/create - Complete Create Token Flow
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data for the complete flow of creating a game token.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "factory_address": "0x1234567890123456789012345678901234567890",
+  "creda_amount": "1000000000000000000000",
+  "game_name": "My Game Token",
+  "game_symbol": "MGT",
+  "decimals": 18
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "creda_approve": "0x095ea7b3000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000003635c9adc5dea00000",
+  "lock_creda": "0xbec697db00000000000000000000000000000000000000000000003635c9adc5dea00000",
+  "xp_amount": "1000000000000000000000",
+  "xp_approve": "0x095ea7b3000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000003635c9adc5dea00000",
+  "create_token": "0xfd44d27400000000000000000000000000000000000000000000003635c9adc5dea00000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000d4d792047616d6520546f6b656e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000034d4754000000000000000000000000000000000000000000000000000000000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+                            <span class="badge bg-primary me-2">POST</span> /api/v1/flow/burn - Complete Burn Token Flow
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+                        <div class="accordion-body">
+                            <p>Generate call data for the complete flow of burning game tokens.</p>
+                            <h5>Request:</h5>
+                            <pre><code class="language-json">{
+  "factory_address": "0x1234567890123456789012345678901234567890",
+  "game_token_address": "0xabcdef0123456789abcdef0123456789abcdef01",
+  "game_id": "1",
+  "burn_amount": "500000000000000000000"
+}</code></pre>
+                            <h5>Response:</h5>
+                            <pre><code class="language-json">{
+  "game_token_approve": "0x095ea7b3000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000001b1ae4d6e2ef500000",
+  "burn_game_token": "0x5ed6c1db0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000001b1ae4d6e2ef500000"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Playground Section -->
+        <section id="playground" class="section">
+            <h1 class="mb-4">API Playground</h1>
+            <p class="lead mb-4">
+                Test the API endpoints directly from your browser. Fill in the form fields and click "Send Request" to see the generated call data.
+            </p>
+
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">API Endpoint</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="endpoint" class="form-label">Select Endpoint</label>
+                        <select class="form-select" id="endpoint">
+                            <option value="health">GET / - Health Check</option>
+                            <option value="creda-approve">POST /api/v1/calldata/creda-approve</option>
+                            <option value="approve-xp">POST /api/v1/calldata/approve-xp</option>
+                            <option value="lock-creda">POST /api/v1/calldata/lock-creda</option>
+                            <option value="create-token">POST /api/v1/calldata/create-token</option>
+                            <option value="burn-token">POST /api/v1/calldata/burn-token</option>
+                            <option value="flow-create">POST /api/v1/flow/create</option>
+                            <option value="flow-burn">POST /api/v1/flow/burn</option>
+                        </select>
+                    </div>
+
+                    <div id="form-container">
+                        <!-- Form fields will be dynamically inserted here -->
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" id="send-request">Send Request</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Response</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <pre><code class="language-json" id="response-container">// Response will appear here</code></pre>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary" id="copy-response">
+                            <i class="bi bi-clipboard me-2"></i>Copy Response
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Token Flows Section -->
+        <section id="flows" class="section">
+            <h1 class="mb-4">Token Flows</h1>
+            <p class="lead mb-4">
+                Understand the complete token flows in the game ecosystem.
+            </p>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Create Token Flow</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="flow-diagram mb-4">
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Approve CRIDA Tokens</h5>
+                                        <p>Allow the factory contract to spend your CRIDA tokens</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Lock CRIDA Tokens</h5>
+                                        <p>Lock your CRIDA tokens to receive XP tokens</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Approve XP Tokens</h5>
+                                        <p>Allow the factory contract to spend your XP tokens</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-plus-circle-fill"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Create Game Token</h5>
+                                        <p>Create your custom game token with the locked XP</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="navigateTo('playground'); setEndpoint('flow-create')">
+                                Try Create Token Flow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Burn Token Flow</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="flow-diagram mb-4">
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Approve Game Tokens</h5>
+                                        <p>Allow the factory contract to spend your game tokens</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-fire"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Burn Game Tokens</h5>
+                                        <p>Burn your game tokens to receive XP tokens back</p>
+                                    </div>
+                                </div>
+                                <div class="flow-arrow">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="flow-icon">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </div>
+                                    <div class="flow-content">
+                                        <h5>Receive XP Tokens</h5>
+                                        <p>XP tokens are returned to your wallet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="navigateTo('playground'); setEndpoint('flow-burn')">
+                                Try Burn Token Flow
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2024 Game Token SDK. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-decoration-none me-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                    <a href="#" class="text-decoration-none me-3">
+                        <i class="bi bi-book"></i> Documentation
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <i class="bi bi-question-circle"></i> Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/json.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

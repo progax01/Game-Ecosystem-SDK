@@ -1,0 +1,194 @@
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #03dac6;
+    --dark-color: #1a1a1a;
+    --light-color: #f8f9fa;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-color);
+    background-color: #f8f9fa;
+}
+
+/* Override Bootstrap primary color */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #7c4dff;
+    border-color: #7c4dff;
+}
+
+/* Hero section */
+.hero-image {
+    max-width: 400px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Feature icons */
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Section handling */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Code blocks */
+pre {
+    border-radius: 8px;
+    margin-bottom: 0;
+}
+
+code {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+/* API Playground */
+.form-label {
+    font-weight: 500;
+}
+
+/* Flow diagrams */
+.flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flow-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+    color: var(--primary-color);
+}
+
+.flow-content {
+    flex-grow: 1;
+}
+
+.flow-content h5 {
+    margin-bottom: 5px;
+}
+
+.flow-content p {
+    margin-bottom: 0;
+    color: #666;
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+
+/* Accordion customization */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(98, 0, 234, 0.1);
+    color: var(--primary-color);
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(98, 0, 234, 0.25);
+}
+
+/* Navbar */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: white;
+}
+
+/* Footer */
+footer a {
+    color: var(--primary-color);
+}
+
+footer a:hover {
+    color: #7c4dff;
+}
+
+/* Response container */
+#response-container {
+    min-height: 200px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* Form validation */
+.is-invalid {
+    border-color: var(--danger-color);
+}
+
+.invalid-feedback {
+    color: var(--danger-color);
+}
+
+/* Animation for section transitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section.active {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-image {
+        max-width: 250px;
+        margin-top: 2rem;
+    }
+    
+    .flow-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .flow-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+} 
